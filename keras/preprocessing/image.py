@@ -1362,11 +1362,12 @@ class DirectoryIterator(Iterator):
 
         if not classes:
             classes = []
-            for subdir in sorted(os.listdir(directory)):
-                if os.path.isdir(os.path.join(directory, subdir)):
-                    classes.append(subdir)
-        self.num_classes = len(classes)
-        self.class_indices = dict(zip(classes, range(len(classes))))
+            for parentsubdir in sorted(os.listdir(directory):
+                for subdir in sorted(os.listdir(directory + '/' + parentsubdir)):
+                    if os.path.isdir(os.path.join(directory + '/' + parentsubdir, subdir)):
+                        classes.append(subdir)
+                self.num_classes = len(classes)
+                self.class_indices = dict(zip(classes, range(len(classes))))
 
         pool = multiprocessing.pool.ThreadPool()
         function_partial = partial(_count_valid_files_in_directory,
@@ -1374,8 +1375,9 @@ class DirectoryIterator(Iterator):
                                    follow_links=follow_links,
                                    split=split)
         self.samples = sum(pool.map(function_partial,
-                                    (os.path.join(directory, subdir)
-                                     for subdir in classes)))
+                                    (os.path.join(directory + '/' + parentsubdir, subdir)
+                                     for subdir in classes
+                                        for parentsubdir in in sorted(os.listdir(directory))))
 
         print('Found %d images belonging to %d classes.' % (self.samples, self.num_classes))
 
