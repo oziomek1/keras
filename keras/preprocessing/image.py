@@ -1366,8 +1366,8 @@ class DirectoryIterator(Iterator):
                 for subdir in sorted(os.listdir(directory + '/' + parentsubdir)):
                     if os.path.isdir(os.path.join(directory + '/' + parentsubdir, subdir)):
                         classes.append(subdir)
-                self.num_classes = len(classes)
-                self.class_indices = dict(zip(classes, range(len(classes))))
+        self.num_classes = len(classes)
+        self.class_indices = dict(zip(classes, range(len(classes))))
 
         pool = multiprocessing.pool.ThreadPool()
         function_partial = partial(_count_valid_files_in_directory,
