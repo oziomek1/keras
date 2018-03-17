@@ -1,33 +1,59 @@
 ## My little changes added here, providing support to generator with my dirs structure:
 datasets/
 --train/
+
 ----dataset1/
+
 ------type1: [img1, img2,...]
+
 ------type2: [img1, img2,...]
+
 ------type3: [img1, img2,...]
+
 ----dataset2/
+
 ------type1: [img1, img2,...]
+
 ------type2: [img1, img2,...]
+
 ------type3: [img1, img2,...]
+
 --test/
+
 ----dataset1/
+
 ------type1: [img1, img2,...]
+
 ------type2: [img1, img2,...]
+
 ------type3: [img1, img2,...]
+
 ----dataset2/
+
 ------type1: [img1, img2,...]
+
 ------type2: [img1, img2,...]
+
 ------type3: [img1, img2,...]
 
 instead of
+
 datasets:
+
 --train/
+
 ----type1: [img1, img2,...]
+
 ----type2: [img1, img2,...]
+
 ----type3: [img1, img2,...]
+
 --test/
+
 ----type1: [img1, img2,...]
+
 ----type1: [img1, img2,...]
+
 ----type3: [img1, img2,...]
 
 # Keras: Deep Learning for humans
